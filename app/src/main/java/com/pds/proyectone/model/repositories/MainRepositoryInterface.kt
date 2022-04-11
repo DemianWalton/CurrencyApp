@@ -5,6 +5,6 @@ import com.pds.proyectone.util.DataState
 
 interface MainRepositoryInterface {
 
-    suspend fun getRates(base: String, accessKey: String): DataState<CurrencyResponse>
+    suspend fun getRates(currencyBase: String): DataState<CurrencyResponse>
 
 }

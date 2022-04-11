@@ -3,6 +3,7 @@ package com.pds.proyectone
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pds.proyectone.model.data.Rates
+import com.pds.proyectone.model.repositories.DefaultMainRepository
 import com.pds.proyectone.model.repositories.MainRepositoryInterface
 import com.pds.proyectone.util.DataState
 import com.pds.proyectone.util.DispatcherProvider
@@ -13,7 +14,7 @@ import javax.inject.Inject
 import kotlin.math.round
 
 class MainViewModel @Inject constructor(
-    private val repository: MainRepositoryInterface,
+    private val repository: DefaultMainRepository,
     private val dispatchers: DispatcherProvider
 ) : ViewModel() {
 
@@ -41,7 +42,7 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch(dispatchers.io) {
             _conversion.value = CurrencyEvent.Loading
             when (val ratesResponse =
-                repository.getRates(fromCurrency, "7389f6e20688b0528eb90403ebd73e37")) {
+                repository.getRates(fromCurrency)) {
                 is DataState.Failure -> _conversion.value =
                     CurrencyEvent.Failure(ratesResponse.message!!)
                 is DataState.Success -> {
@@ -61,6 +62,7 @@ class MainViewModel @Inject constructor(
             }
         }
     }
+
     private fun getRatesForCurrency(currency: String, rates: Rates) = when (currency) {
         "AED" -> rates.AED
         "AFN" -> rates.AFN
