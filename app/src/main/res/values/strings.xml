@@ -1,5 +1,12 @@
 <resources>
-    <string name="app_name">ProyectOne</string>
+    <string translatable="false" name="app_name">ProyectOne</string>
+    <string name="main_fromCurrency">From</string>
+    <string name="main_amount">Amount</string>
+    <string name="main_toCurrency">To</string>
+    <string name="main_convert">Convert</string>
+    <string name="main_result">Result</string>
+
+
     <string-array name="currency_options">
         <item>AED</item>
         <item>AFN</item>

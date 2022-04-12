@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="main_fromCurrency">De..</string>
+    <string name="main_amount">Monto</string>
+    <string name="main_toCurrency">A..</string>
+    <string name="main_convert">Convertir</string>
+    <string name="main_result">Resultado</string>
+</resources>

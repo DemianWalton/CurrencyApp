@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pds.proyectone.model.data.Rates
 import com.pds.proyectone.model.repositories.DefaultMainRepository
-import com.pds.proyectone.model.repositories.MainRepositoryInterface
 import com.pds.proyectone.util.DataState
 import com.pds.proyectone.util.DispatcherProvider
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,7 +23,6 @@ class MainViewModel @Inject constructor(
         object Loading : CurrencyEvent()
         object Empty : CurrencyEvent()
     }
-
     private val _conversion = MutableStateFlow<CurrencyEvent>(CurrencyEvent.Empty)
     val conversion: StateFlow<CurrencyEvent> = _conversion
 

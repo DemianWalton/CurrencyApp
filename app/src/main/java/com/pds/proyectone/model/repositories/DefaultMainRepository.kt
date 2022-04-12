@@ -14,7 +14,7 @@ class DefaultMainRepository @Inject constructor(
         return try {
             val response = api.getLatestRates(currencyBase, BuildConfig.API_KEY)
             val result = response.body()
-            if(response.isSuccessful && result != null )
+            if (response.isSuccessful && result != null)
                 DataState.Success(result) else DataState.Failure(response.message())
 
         } catch (e: Exception) {

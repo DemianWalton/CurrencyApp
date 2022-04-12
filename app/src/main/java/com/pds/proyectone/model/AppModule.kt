@@ -1,5 +1,6 @@
 package com.pds.proyectone.model
 
+import android.app.Application
 import com.pds.proyectone.model.interfaces.CurrencyApi
 import com.pds.proyectone.model.repositories.DefaultMainRepository
 import com.pds.proyectone.model.repositories.MainRepositoryInterface
@@ -7,6 +8,7 @@ import com.pds.proyectone.util.DispatcherProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -23,6 +25,7 @@ object AppModule {
 
 
     //Fixme pending to add hhtpClient for customization like timeOut
+
     @Singleton
     @Provides
     fun provideCurrencyApi(): CurrencyApi = Retrofit.Builder()
@@ -50,5 +53,4 @@ object AppModule {
             get() = Dispatchers.Unconfined
 
     }
-
 }

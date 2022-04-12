@@ -1,11 +1,9 @@
 package com.pds.proyectone
 
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import com.pds.proyectone.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,11 +19,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.button.setOnClickListener {
+        binding.buttonConvert.setOnClickListener {
             viewModel.convert(
                 binding.etAmount.toString().trim(),
-                binding.from.selectedItem.toString(),
-                binding.to.selectedItem.toString()
+                binding.fromCurrency.text.toString(),
+                binding.toCurrency.text.toString()
             )
         }
 
@@ -34,11 +32,11 @@ class MainActivity : AppCompatActivity() {
                 when (event) {
                     is MainViewModel.CurrencyEvent.Success -> {
                         binding.progress.isVisible = false
-                        binding.result.text = event.resultText
+                        binding.tvResult.text = event.resultText
                     }
                     is MainViewModel.CurrencyEvent.Failure -> {
                         binding.progress.isVisible = false
-                        binding.result.text = event.failureText
+                        binding.tvResult.text = event.failureText
                     }
                     is MainViewModel.CurrencyEvent.Loading -> {
                         binding.progress.isVisible = true

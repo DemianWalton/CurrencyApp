@@ -5,10 +5,6 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 
-//def apikeyPropertiesFile = rootProject.file("local.properties")
-//def apikeyProperties = new Properties()
-//apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
-
 android {
     compileSdk 32
 
@@ -26,14 +22,6 @@ android {
         viewBinding true
     }
 
-/*    compileOptions {
-        sourceCompatibility 11
-        targetCompatibility 11
-    }
-    kotlinOptions {
-        jvmTarget = '11'
-    }*/
-
     defaultConfig {
         def apikeyPropertiesFile = rootProject.file("local.properties")
         def apikeyProperties = new Properties()
@@ -42,9 +30,6 @@ android {
     }
 
     buildTypes {
-        /*debug {
-            buildConfigField "String", "MAIN_URL", "\"https://2d83-181-170-203-201.ngrok.io\""
-        }*/
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
