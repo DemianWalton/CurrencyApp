@@ -21,9 +21,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.buttonConvert.setOnClickListener {
             viewModel.convert(
-                binding.etAmount.toString().trim(),
-                binding.fromCurrency.text.toString(),
-                binding.toCurrency.text.toString()
+                binding.etCryptoId.text.toString().trim(),
+                binding.etAmount.text.toString().trim()
             )
         }
 
@@ -31,20 +30,23 @@ class MainActivity : AppCompatActivity() {
             viewModel.conversion.collect { event ->
                 when (event) {
                     is MainViewModel.CurrencyEvent.Success -> {
-                        binding.progress.isVisible = false
-                        binding.tvResult.text = event.resultText
+                        setViewForLoading(false, event.resultText)
                     }
                     is MainViewModel.CurrencyEvent.Failure -> {
-                        binding.progress.isVisible = false
-                        binding.tvResult.text = event.failureText
+                        setViewForLoading(false, event.failureText)
                     }
                     is MainViewModel.CurrencyEvent.Loading -> {
-                        binding.progress.isVisible = true
+                        setViewForLoading(true)
                     }
                     else -> Unit
                 }
             }
         }
+    }
 
+    private fun setViewForLoading(isLoading: Boolean, displayText: String = "") {
+        binding.progress.isVisible = isLoading
+        binding.buttonConvert.isEnabled = !isLoading
+        binding.tvResult.text = displayText
     }
 }

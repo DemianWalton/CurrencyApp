@@ -28,25 +28,30 @@
         app:layout_constraintGuide_percent="0.95" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fromCurrencyContainer"
+        android:id="@+id/cryptoIdContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
+        app:boxBackgroundMode="outline"
+        app:layout_constraintBottom_toBottomOf="@+id/amountContainer"
         app:layout_constraintEnd_toStartOf="@+id/amountContainer"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="@+id/guidelineStart"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop">
+        app:layout_constraintTop_toTopOf="@+id/amountContainer">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fromCurrency"
+            android:id="@+id/et_cryptoId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/currency_options"
-            android:hint="@string/main_fromCurrency"
-            android:inputType="none"
-            android:textSize="20sp" />
+            android:hint="@string/crypto_id"
+            android:inputType="textCapCharacters"
+            app:layout_constraintBottom_toBottomOf="@+id/fromCurrencyContainer"
+            app:layout_constraintEnd_toStartOf="@+id/toCurrencyContainer"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/fromCurrencyContainer"
+            app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -56,10 +61,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:boxBackgroundMode="outline"
-        app:layout_constraintBottom_toBottomOf="@+id/fromCurrencyContainer"
-        app:layout_constraintEnd_toStartOf="@+id/toCurrencyContainer"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/fromCurrencyContainer"
+        app:layout_constraintStart_toEndOf="@+id/cryptoIdContainer"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
         app:startIconDrawable="@drawable/ic_baseline_attach_money_24">
 
@@ -75,39 +79,17 @@
             app:layout_constraintStart_toEndOf="@+id/fromCurrencyContainer"
             app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
 
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/toCurrencyContainer"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/amountContainer"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/toCurrency"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/currency_options"
-            android:hint="@string/main_toCurrency"
-            android:inputType="none"
-            android:textSize="20sp" />
-
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/button_convert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/main_convert"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fromCurrencyContainer" />
+        app:layout_constraintTop_toBottomOf="@+id/amountContainer" />
 
 
     <TextView
