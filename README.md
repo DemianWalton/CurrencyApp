@@ -1,1 +1,7 @@
-CurrencyApp
+CryptoCurrency App
+
+* MVVM
+* KOTLIN
+* DAGGER-HILT
+* CONSTRAINT LAYOUT
+* RETROFIT
